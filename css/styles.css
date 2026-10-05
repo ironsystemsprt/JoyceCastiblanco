@@ -47,20 +47,14 @@ textarea {
     --color-resources: #ffffff;
     --color-background: #ffffff;
     --color-surface: #f8f8f6;
-
     --color-text: #171717;
     --color-muted: #6d6d6d;
-
     --color-border: #dedbd6;
-
     --color-primary: #111111;
     --color-white: #ffffff;
-
     --container-width: 1240px;
-
     --shadow-soft: 0 12px 35px rgba(0, 0, 0, 0.08);
     --shadow-card: 0 10px 30px rgba(0, 0, 0, 0.08);
-
     --radius-large: 30px;
     --radius-medium: 20px;
     --radius-small: 12px;
@@ -121,26 +115,19 @@ textarea {
     top: 25px;
     right: 35px;
     left: auto !important;
-
     transform: none !important;
-
     z-index: 20;
-
     display: flex;
     align-items: center;
     justify-content: center;
-
     pointer-events: none;
 }
 
 .section-logo img {
     display: block;
-
     width: 150px;
     height: auto;
-
     max-width: 100%;
-
     object-fit: contain;
 }
 
@@ -153,16 +140,11 @@ textarea {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-
     min-height: 50px;
-
     padding: 0 25px;
-
     border-radius: 999px;
-
     font-size: 15px;
     font-weight: 700;
-
     transition:
         transform 0.25s ease,
         background 0.25s ease,
@@ -200,26 +182,19 @@ textarea {
 
 .hero {
     position: relative;
-
     min-height: 100vh;
-
     display: flex;
     align-items: center;
-
     padding: 90px 0 80px;
-
     background: var(--color-header);
 }
 
 .hero__grid {
     display: grid;
-
     grid-template-columns:
         minmax(300px, 0.75fr)
         minmax(0, 1.25fr);
-
     gap: clamp(40px, 6vw, 80px);
-
     align-items: center;
 }
 
@@ -266,43 +241,27 @@ textarea {
 
 .hero__card {
     position: relative;
-
     width: 100%;
-
     padding: 38px 42px;
-
     background: rgba(255, 255, 255, 0.90);
-
     border: 2px solid rgba(255, 255, 255, 0.95);
-
     border-radius: 28px;
-
     box-shadow:
         0 18px 45px rgba(0, 0, 0, 0.10);
-
     backdrop-filter: blur(5px);
 }
 
-
 /* pequeño borde interior para remarcar la estructura */
-
 .hero__card::before {
     content: "";
-
     position: absolute;
-
     inset: 7px;
-
     border: 1px solid rgba(0, 0, 0, 0.06);
-
     border-radius: 22px;
-
     pointer-events: none;
 }
 
-
 /* contenido por encima del borde interior */
-
 .hero__card > * {
     position: relative;
     z-index: 1;
@@ -315,20 +274,15 @@ textarea {
 
 .hero__card .eyebrow {
     margin-bottom: 10px;
-
     font-size: 12px;
     letter-spacing: 0.13em;
 }
 
 .hero__card h1 {
     margin-bottom: 22px;
-
     font-size: clamp(38px, 4.2vw, 58px);
-
     line-height: 1.04;
-
     letter-spacing: -0.035em;
-
     color: #171717;
 }
 
@@ -339,11 +293,8 @@ textarea {
 
 .hero__text {
     color: #4d4945;
-
     font-size: 16px;
-
     line-height: 1.68;
-
     text-align: justify;
 }
 
@@ -368,9 +319,7 @@ textarea {
 .hero__actions {
     display: flex;
     flex-wrap: wrap;
-
     gap: 12px;
-
     margin-top: 25px;
 }
 
@@ -385,7 +334,6 @@ textarea {
             rgba(20, 20, 20, 0.94),
             rgba(20, 20, 20, 0.94)
         );
-
     color: #fff;
 }
 
@@ -408,13 +356,9 @@ textarea {
 
 .contact-form {
     padding: clamp(25px, 5vw, 50px);
-
     background: rgba(255, 255, 255, 0.96);
-
     border: 1px solid rgba(255, 255, 255, 0.15);
-
     border-radius: var(--radius-large);
-
     box-shadow:
         0 15px 45px rgba(0, 0, 0, 0.18);
 }
@@ -425,11 +369,8 @@ textarea {
 
 .form-group label {
     display: block;
-
     margin-bottom: 8px;
-
     color: #222;
-
     font-size: 14px;
     font-weight: 700;
 }
@@ -437,19 +378,12 @@ textarea {
 .form-group input,
 .form-group textarea {
     width: 100%;
-
     padding: 15px 17px;
-
     border: 1px solid #ddd;
-
     border-radius: 12px;
-
     outline: none;
-
     background: #fff;
-
     color: var(--color-text);
-
     transition:
         border-color 0.2s ease,
         box-shadow 0.2s ease;
@@ -461,14 +395,12 @@ textarea {
 
 .form-group textarea {
     min-height: 150px;
-
     resize: vertical;
 }
 
 .form-group input:focus,
 .form-group textarea:focus {
     border-color: #999;
-
     box-shadow:
         0 0 0 3px rgba(0, 0, 0, 0.05);
 }
@@ -490,48 +422,34 @@ textarea {
 .product-layout {
     width: 100%;
     max-width: 1180px;
-
     margin: 0 auto;
-
     display: grid;
-
     grid-template-columns:
         minmax(0, 1.7fr)
         minmax(300px, 0.8fr);
-
     gap: 55px;
-
     align-items: center;
 }
 
 .product-image-container {
     width: 100%;
     min-width: 0;
-
     min-height: 650px;
-
     padding: 15px;
-
     display: flex;
     align-items: center;
     justify-content: center;
-
     background: rgba(255, 255, 255, 0.48);
-
     border-radius: 30px;
-
     overflow: hidden;
 }
 
 .product-image-container img {
     width: 100%;
     height: auto;
-
     max-width: 100%;
     max-height: 760px;
-
     display: block;
-
     object-fit: contain;
     object-position: center;
 }
@@ -543,34 +461,23 @@ textarea {
 
 .country-links h3 {
     margin-bottom: 20px;
-
     font-size: 22px;
     line-height: 1.2;
-
     text-align: left;
 }
 
 .country-item {
     width: 100%;
-
     min-height: 58px;
-
     margin-bottom: 10px;
-
     padding: 10px 16px;
-
     display: flex;
     align-items: center;
     justify-content: space-between;
-
     border: 1px solid rgba(0, 0, 0, 0.07);
-
     border-radius: 14px;
-
     background: rgba(255, 255, 255, 0.78);
-
     color: #171717;
-
     transition:
         transform 0.25s ease,
         background 0.25s ease,
@@ -580,23 +487,17 @@ textarea {
 
 .country-item:hover {
     transform: translateX(5px);
-
     background: #fff;
-
     border-color: rgba(0, 0, 0, 0.12);
-
     box-shadow:
         0 8px 22px rgba(0, 0, 0, 0.08);
 }
 
 .country-item__left {
     min-width: 0;
-
     display: flex;
     align-items: center;
-
     gap: 14px;
-
     font-size: 15px;
     font-weight: 600;
 }
@@ -604,24 +505,17 @@ textarea {
 .country-item__left img {
     width: 34px;
     height: 23px;
-
     display: block;
-
     flex-shrink: 0;
-
     object-fit: cover;
-
     border-radius: 3px;
 }
 
 .country-item__arrow {
     flex-shrink: 0;
-
     margin-left: 15px;
-
     font-size: 23px;
     line-height: 1;
-
     transition:
         transform 0.2s ease;
 }
@@ -637,7 +531,6 @@ textarea {
 
 .kids {
     position: relative;
-
     background:
         linear-gradient(
             rgba(229, 240, 227, 0.94),
@@ -658,31 +551,21 @@ textarea {
 
 .resources__grid {
     width: min(100%, 900px);
-
     margin: 0 auto;
-
     display: grid;
-
     grid-template-columns:
         repeat(2, minmax(0, 1fr));
-
     gap: 24px;
 }
 
 .resource-card {
     padding: 40px 30px;
-
     background: #fff;
-
     border: 1px solid #e7e7e7;
-
     border-radius: 24px;
-
     text-align: center;
-
     box-shadow:
         0 8px 25px rgba(0, 0, 0, 0.05);
-
     transition:
         transform 0.25s ease,
         box-shadow 0.25s ease;
@@ -690,7 +573,6 @@ textarea {
 
 .resource-card:hover {
     transform: translateY(-5px);
-
     box-shadow:
         0 15px 35px rgba(0, 0, 0, 0.10);
 }
@@ -698,25 +580,19 @@ textarea {
 .resource-card__icon {
     width: 58px;
     height: 58px;
-
     margin: 0 auto 20px;
-
     display: flex;
     align-items: center;
     justify-content: center;
-
     border-radius: 50%;
-
     background: #111;
     color: #fff;
-
     font-size: 23px;
     font-weight: 700;
 }
 
 .resource-card h3 {
     margin-bottom: 10px;
-
     font-size: 22px;
 }
 
@@ -732,7 +608,6 @@ textarea {
 .footer {
     width: 100%;
     padding: 18px 20px;
-
     background: #080808;
     color: #ffffff;
 }
@@ -741,9 +616,7 @@ textarea {
     display: flex;
     align-items: center;
     justify-content: center;
-
     gap: 18px;
-
     max-width: 1240px;
     margin: 0 auto;
 }
@@ -751,15 +624,12 @@ textarea {
 .footer__logo {
     width: 75px;
     height: auto;
-
     display: block;
 }
 
 .footer__content p {
     margin: 0;
-
     color: #999999;
-
     font-size: 12px;
     line-height: 1.4;
 }
@@ -793,41 +663,32 @@ textarea {
     }
 }
 
+
 /* =========================================================
    SOCIAL FLOAT
 ========================================================= */
 
 .social-float {
     position: fixed;
-
     right: 22px;
     bottom: 22px;
-
     z-index: 1000;
-
     display: flex;
     flex-direction: column;
-
     gap: 10px;
 }
 
 .social-float__item {
     width: 52px;
     height: 52px;
-
     display: flex;
     align-items: center;
     justify-content: center;
-
     border-radius: 50%;
-
     color: #fff;
-
     text-decoration: none;
-
     box-shadow:
         0 8px 22px rgba(0, 0, 0, 0.18);
-
     transition:
         transform 0.25s ease,
         box-shadow 0.25s ease;
@@ -840,7 +701,6 @@ textarea {
 
 .social-float__item:hover {
     transform: translateY(-4px) scale(1.05);
-
     box-shadow:
         0 12px 28px rgba(0, 0, 0, 0.25);
 }
@@ -872,12 +732,14 @@ textarea {
         grid-template-columns:
             minmax(260px, 0.8fr)
             minmax(0, 1.2fr);
-
         gap: 40px;
     }
 
+    /* ÚNICO CAMBIO: imagen circular en tablet */
     .hero__image {
-        height: 480px;
+        width: 360px;
+        height: 360px;
+        border-radius: 50%;
     }
 
     .hero__card {
@@ -896,7 +758,6 @@ textarea {
         grid-template-columns:
             minmax(0, 1.55fr)
             minmax(270px, 0.8fr);
-
         gap: 35px;
     }
 
@@ -910,7 +771,6 @@ textarea {
 
     .country-item__left {
         gap: 10px;
-
         font-size: 14px;
     }
 
@@ -964,7 +824,6 @@ textarea {
     .section-logo {
         top: 18px;
         right: 18px;
-
         left: auto !important;
         transform: none !important;
     }
@@ -979,66 +838,57 @@ textarea {
 
     .hero {
         min-height: auto;
-
         padding: 55px 0 70px;
     }
 
     .hero__grid {
         display: flex;
         flex-direction: column;
-
         gap: 32px;
     }
 
+    /* ÚNICO CAMBIO: círculo responsive en móvil */
     .hero__image {
-        width: 100%;
+        width: min(88vw, 390px);
+        height: min(88vw, 390px);
         max-width: 390px;
-
-        height: auto;
-        min-height: 420px;
-
+        max-height: 390px;
+        min-height: 0;
+        aspect-ratio: 1 / 1;
+        border-radius: 50%;
         order: 1;
     }
 
     .hero__content {
         width: 100%;
-
         order: 2;
     }
 
     .hero__card {
         padding: 30px 23px;
-
         border-radius: 26px;
-
         border-width: 2px;
     }
 
     .hero__card::before {
         inset: 6px;
-
         border-radius: 20px;
     }
 
     .hero__card h1 {
         font-size: clamp(36px, 10vw, 50px);
-
         text-align: center;
-
         margin-bottom: 20px;
     }
 
     .hero__card .eyebrow {
         display: block;
-
         text-align: center;
     }
 
     .hero__text {
         font-size: 15.5px;
-
         line-height: 1.68;
-
         text-align: justify;
     }
 
@@ -1048,7 +898,6 @@ textarea {
 
     .hero__actions {
         justify-content: center;
-
         margin-top: 24px;
     }
 
@@ -1072,44 +921,33 @@ textarea {
 
     .product-layout {
         width: 100%;
-
         display: flex;
         flex-direction: column;
-
         gap: 35px;
     }
 
     .product-image-container {
         width: 100%;
-
         min-height: auto;
-
         padding: 8px;
-
         order: 1;
     }
 
     .product-image-container img {
         width: 100%;
-
         height: auto;
-
         max-height: none;
-
         object-fit: contain;
     }
 
     .country-links {
         width: 100%;
-
         order: 2;
     }
 
     .country-links h3 {
         margin-bottom: 18px;
-
         text-align: center;
-
         font-size: 20px;
     }
 
@@ -1133,7 +971,6 @@ textarea {
 
     .footer__grid {
         grid-template-columns: 1fr;
-
         gap: 35px;
     }
 
@@ -1143,9 +980,7 @@ textarea {
 
     .footer__bottom {
         flex-direction: column;
-
         align-items: flex-start;
-
         gap: 8px;
     }
 
@@ -1155,7 +990,6 @@ textarea {
     .social-float {
         right: 14px;
         bottom: 14px;
-
         gap: 8px;
     }
 
@@ -1191,10 +1025,15 @@ textarea {
         padding-top: 35px;
     }
 
+    /* ÚNICO CAMBIO: círculo también en móviles pequeños */
     .hero__image {
-        min-height: 360px;
-
-        border-radius: 22px;
+        width: min(84vw, 340px);
+        height: min(84vw, 340px);
+        max-width: 340px;
+        max-height: 340px;
+        min-height: 0;
+        aspect-ratio: 1 / 1;
+        border-radius: 50%;
     }
 
     .hero__content h1 {
@@ -1203,19 +1042,16 @@ textarea {
 
     .hero__card {
         padding: 26px 19px;
-
         border-radius: 23px;
     }
 
     .hero__card::before {
         inset: 5px;
-
         border-radius: 18px;
     }
 
     .hero__text {
         font-size: 15px;
-
         line-height: 1.65;
     }
 
@@ -1229,7 +1065,6 @@ textarea {
 
     .contact-form {
         padding: 22px 18px;
-
         border-radius: 20px;
     }
 
@@ -1239,13 +1074,11 @@ textarea {
 
     .country-item {
         min-height: 55px;
-
         padding: 9px 12px;
     }
 
     .country-item__left {
         gap: 10px;
-
         font-size: 14px;
     }
 
@@ -1269,7 +1102,6 @@ textarea {
     .section-logo {
         top: 15px;
         right: 15px;
-
         left: auto !important;
         transform: none !important;
     }
