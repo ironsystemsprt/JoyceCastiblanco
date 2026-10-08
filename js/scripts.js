@@ -1,118 +1,206 @@
 document.addEventListener("DOMContentLoaded", () => {
+// ==========================================
+// CONFIGURACIÓN EMAILJS
+// ==========================================
+const EMAILJS_SERVICE_ID = "service_zkakfxy";
+const EMAILJS_PUBLIC_KEY = "PXlXiRUIToILpBcrg";
 
-    const ebookModal = document.getElementById("ebookModal");
-    const ebookModalClose = document.getElementById("ebookModalClose");
-    const ebookModalOverlay = document.getElementById("ebookModalOverlay");
-    const ebookForm = document.getElementById("ebookForm");
 
-    /*
-     * ABRIR MODAL EBOOK
-     * Se utiliza delegación de eventos para que funcione
-     * aunque el enlace tenga href="#".
-     */
-    document.addEventListener("click", (event) => {
+// Plantilla del formulario ¿Hablemos?
+const EMAILJS_CONTACT_TEMPLATE_ID = "template_dp2lo3p";
 
-        const ebookButton = event.target.closest("#ebookOpen");
+// Plantilla del formulario de solicitud de eBook
+const EMAILJS_EBOOK_TEMPLATE_ID = "template_r3b1ipf";
 
-        if (!ebookButton) {
-            return;
-        }
+// Inicializar EmailJS
+if (typeof emailjs === "undefined") {
+    console.error("EmailJS no está cargado. Revisa el HTML.");
+    alert("No se pudo cargar el servicio de envío. Recarga la página.");
+    return;
+}
 
+emailjs.init({
+    publicKey: EMAILJS_PUBLIC_KEY
+});
+
+// ==========================================
+// ELEMENTOS DEL MODAL EBOOK
+// ==========================================
+const ebookModal = document.getElementById("ebookModal");
+const ebookModalClose = document.getElementById("ebookModalClose");
+const ebookModalOverlay = document.getElementById("ebookModalOverlay");
+const ebookForm = document.getElementById("ebookForm");
+const ebookOpen = document.getElementById("ebookOpen");
+
+// ==========================================
+// ABRIR MODAL EBOOK
+// ==========================================
+if (ebookOpen && ebookModal) {
+    ebookOpen.addEventListener("click", (event) => {
         event.preventDefault();
-        event.stopPropagation();
-
-        if (!ebookModal) {
-            console.error("No se encontró #ebookModal");
-            return;
-        }
 
         ebookModal.classList.add("is-open");
         ebookModal.setAttribute("aria-hidden", "false");
         document.body.classList.add("modal-open");
     });
+}
 
+// ==========================================
+// CERRAR MODAL EBOOK
+// ==========================================
+function closeEbookModal() {
+    if (!ebookModal) return;
 
-    /*
-     * CERRAR MODAL
-     */
-    function closeEbookModal() {
+    ebookModal.classList.remove("is-open");
+    ebookModal.setAttribute("aria-hidden", "true");
+    document.body.classList.remove("modal-open");
+}
 
-        if (!ebookModal) {
-            return;
-        }
-
-        ebookModal.classList.remove("is-open");
-        ebookModal.setAttribute("aria-hidden", "true");
-        document.body.classList.remove("modal-open");
-    }
-
-
-    /*
-     * BOTÓN X
-     */
-    if (ebookModalClose) {
-
-        ebookModalClose.addEventListener("click", (event) => {
-
-            event.preventDefault();
-            event.stopPropagation();
-
-            closeEbookModal();
-        });
-    }
-
-
-    /*
-     * CLIC FUERA DEL MODAL
-     */
-    if (ebookModalOverlay) {
-
-        ebookModalOverlay.addEventListener("click", () => {
-
-            closeEbookModal();
-        });
-    }
-
-
-    /*
-     * TECLA ESC
-     */
-    document.addEventListener("keydown", (event) => {
-
-        if (event.key === "Escape") {
-            closeEbookModal();
-        }
+if (ebookModalClose) {
+    ebookModalClose.addEventListener("click", (event) => {
+        event.preventDefault();
+        closeEbookModal();
     });
+}
 
+if (ebookModalOverlay) {
+    ebookModalOverlay.addEventListener("click", closeEbookModal);
+}
 
-    /*
-     * FORMULARIO
-     */
-    if (ebookForm) {
+document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+        closeEbookModal();
+    }
+});
 
-        ebookForm.addEventListener("submit", (event) => {
+// ==========================================
+// BLOQUEAR BOTÓN DURANTE EL ENVÍO
+// ==========================================
+function setButtonLoading(button, loading, originalText) {
+    if (!button) return;
 
-            event.preventDefault();
+    button.disabled = loading;
+    button.textContent = loading ? "Enviando..." : originalText;
+}
 
-            const nombre = document.getElementById("ebookNombre")?.value.trim();
-            const email = document.getElementById("ebookEmail")?.value.trim();
-            const institucion = document.getElementById("ebookInstitucion")?.value.trim();
-            const tipo = document.getElementById("ebookTipo")?.value;
+// ==========================================
+// FORMULARIO DE CONTACTO: ¿HABLEMOS?
+// ==========================================
+const contactForm = document.getElementById("contactForm");
 
-            if (!nombre || !email || !institucion || !tipo) {
-                alert("Por favor completa todos los campos.");
-                return;
-            }
+if (contactForm) {
+    const contactButton = contactForm.querySelector(
+        'button[type="submit"]'
+    );
+
+    const contactButtonText = contactButton
+        ? contactButton.textContent
+        : "Enviar mensaje";
+
+    contactForm.addEventListener("submit", async (event) => {
+        event.preventDefault();
+
+        if (!contactForm.reportValidity()) return;
+
+        setButtonLoading(
+            contactButton,
+            true,
+            contactButtonText
+        );
+
+        try {
+            await emailjs.sendForm(
+                EMAILJS_SERVICE_ID,
+                EMAILJS_CONTACT_TEMPLATE_ID,
+                contactForm
+            );
 
             alert(
-                "Gracias por tu solicitud.\n\n" +
-                "Pronto recibirás tu eBook."
+                "¡Mensaje enviado correctamente!\n\n" +
+                "Gracias por contactarnos. Te responderemos pronto."
+            );
+
+            contactForm.reset();
+
+        } catch (error) {
+            console.error(
+                "Error al enviar el formulario de contacto:",
+                error
+            );
+
+            alert(
+                "No fue posible enviar tu mensaje.\n\n" +
+                "Revisa la conexión y la configuración de EmailJS."
+            );
+
+        } finally {
+            setButtonLoading(
+                contactButton,
+                false,
+                contactButtonText
+            );
+        }
+    });
+}
+
+// ==========================================
+// FORMULARIO DE SOLICITUD DE EBOOK
+// ==========================================
+if (ebookForm) {
+    const ebookButton = ebookForm.querySelector(
+        'button[type="submit"]'
+    );
+
+    const ebookButtonText = ebookButton
+        ? ebookButton.textContent
+        : "Solicitar eBook";
+
+    ebookForm.addEventListener("submit", async (event) => {
+        event.preventDefault();
+
+        if (!ebookForm.reportValidity()) return;
+
+        setButtonLoading(
+            ebookButton,
+            true,
+            ebookButtonText
+        );
+
+        try {
+            await emailjs.sendForm(
+                EMAILJS_SERVICE_ID,
+                EMAILJS_EBOOK_TEMPLATE_ID,
+                ebookForm
+            );
+
+            alert(
+                "¡Solicitud enviada correctamente!\n\n" +
+                "Gracias por tu interés. Hemos recibido tus datos."
             );
 
             ebookForm.reset();
-
             closeEbookModal();
-        });
-    }
+
+        } catch (error) {
+            console.error(
+                "Error al solicitar el eBook:",
+                error
+            );
+
+            alert(
+                "No fue posible enviar tu solicitud.\n\n" +
+                "Inténtalo nuevamente más tarde."
+            );
+
+        } finally {
+            setButtonLoading(
+                ebookButton,
+                false,
+                ebookButtonText
+            );
+        }
+    });
+}
+
 
 });
